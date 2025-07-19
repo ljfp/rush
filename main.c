@@ -6,60 +6,81 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:50:24 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/19 18:43:29 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/19 19:07:04 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
-
-void	ft_putstr(char *str);
-char	**ft_split(char *str, char *charset);
+void	ft_putchar(char c);
+void	ft_putnbr(int nb);
 int		ft_atoi(char *str);
 
-int	main(int argc, char *argv[])
+void print_numbers(int *numbers, int size)
 {
-	char	**views;
-	int		*numbers;
-	int		count;
+    int i;
+    
+    i = 0;
+    while (i < size)
+    {
+        ft_putnbr(numbers[i]);
+        ft_putchar(' ');
+        i++;
+    }
+    ft_putchar('\n');
+}
 
-	if (argc != 2)
-	{
-		ft_putstr("Error\n");
-		return (1);
-	}
-    views = ft_split(argv[1], " ");
-    if (!views)
+int parse_args(char *str, int *numbers)
+{
+    int i;
+    int num_index;
+	int space_flag;
+    
+    i = 0;
+    num_index = 0;
+    space_flag = 0;
+    while (str[i] != '\0' && num_index < 16)
     {
-        ft_putstr("Error\n");
-        return (1);
-    }
-    while (views[count])
-        count++;
-    if (count != 16)
-    {
-        ft_putstr("Error\n");
-        for (int i = 0; i < count; i++)
-            free(views[i]);
-        free(views);
-        return (1);
-    }
-	numbers = (void*)0;
-    for (int i = 0; i < 16; i++)
-    {
-        numbers[i] = ft_atoi(views[i]);
-        if (numbers[i] < 1 || numbers[i] > 4)
+        if (str[i] >= '1' && str[i] <= '4')
         {
-            ft_putstr("Error\n");
-            for (int j = 0; j < 16; j++)
-                free(views[j]);
-            free(views);
-            return (1);
+            numbers[num_index] = str[i] - '0';
+            num_index++;
+            space_flag = 0;
         }
+        else if (str[i] == ' ')
+        {
+            space_flag = 1;
+        }
+        else
+            return (0);
+        i++;
     }
-    for (int i = 0; i < 16; i++)
-        free(views[i]);
-    free(views);
+    if (num_index != 16)
+        return (0);
+    return (1);
+}
+
+int main(int argc, char **argv)
+{
+    int numbers[16];
+    int i;
+    int valid;
+    
+    i = 0;
+    valid = 0;
+    if (argc != 2)
+    {
+        write(1, "Error\n", 6);
+        return (1);
+    }
+    valid = parse_args(argv[1], numbers);
+    if (!valid)
+    {
+        write(1, "Error\n", 6);
+        return (1);
+    }
+    print_numbers(numbers, 16);
     return (0);
 }
