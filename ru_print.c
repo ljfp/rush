@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helpers.c                                    :+:      :+:    :+:   */
+/*   ru_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 19:24:10 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/19 19:36:31 by lauferna         ###   ########.fr       */
+/*   Created: 2025/07/19 20:28:39 by lauferna          #+#    #+#             */
+/*   Updated: 2025/07/19 22:42:23 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-void	ft_putnbr(int nb);
+#include "rush.h"
 
-void	print_numbers(int *numbers, int size)
+void	ft_putchar(char c);
+
+void	print_grid(int grid[SIZE][SIZE])
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < size)
+	while (i < SIZE)
 	{
-		ft_putnbr(numbers[i]);
-		ft_putchar(' ');
+		j = 0;
+		while (j < SIZE)
+		{
+			ft_putchar(grid[i][j] + '0');
+			if (j < SIZE - 1)
+				ft_putchar(' ');
+			j++;
+		}
+		ft_putchar('\n');
 		i++;
 	}
-	ft_putchar('\n');
 }
