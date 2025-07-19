@@ -6,7 +6,7 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:50:24 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/19 17:35:30 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:43:29 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
         free(views);
         return (1);
     }
+	numbers = (void*)0;
     for (int i = 0; i < 16; i++)
     {
         numbers[i] = ft_atoi(views[i]);
