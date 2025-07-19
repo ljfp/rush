@@ -6,7 +6,7 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:00:29 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/19 19:01:40 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/19 19:15:44 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@ int	ft_atoi(char *str)
 {
 	int	res;
 	int	i;
-        
-    res = 0;
-    i = 0;
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        res = res * 10 + (str[i] - '0');
-        i++;
-    }
-    return (res);
+
+	res = 0;
+	i = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	return (res);
 }
