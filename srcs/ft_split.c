@@ -6,7 +6,7 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:18:59 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/17 23:44:05 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:44:18 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		is_sep(char c, char *charset);
 int		count_words(char *str, char *charset);
 char	*dup_word(char *str, char *charset);
-char	**ft_split(char *str, char *charset);
 
 int	is_sep(char c, char *charset)
 {

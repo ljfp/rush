@@ -6,13 +6,11 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:14:16 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/11 12:27:46 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:43:48 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_putstr(char *str);
 
 void	ft_putstr(char *str)
 {

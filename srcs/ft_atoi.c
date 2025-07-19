@@ -6,11 +6,10 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:00:29 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/14 21:06:06 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:43:35 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_atoi(char *str);
 unsigned int	is_space(unsigned char c);
 
 unsigned int	is_space(unsigned char c)
