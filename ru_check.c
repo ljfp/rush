@@ -12,7 +12,7 @@
 
 #include "rush.h"
 
-int	check_row_left(int grid[SIZE][SIZE], int row, int expected)
+int	check_row_left(int **grid, int row, int expected, int size)
 {
 	int	col;
 	int	visible;
@@ -21,7 +21,7 @@ int	check_row_left(int grid[SIZE][SIZE], int row, int expected)
 	col = 0;
 	visible = 0;
 	max_height = 0;
-	while (col < SIZE)
+	while (col < size)
 	{
 		if (grid[row][col] > max_height)
 		{
@@ -33,13 +33,13 @@ int	check_row_left(int grid[SIZE][SIZE], int row, int expected)
 	return (visible == expected);
 }
 
-int	check_row_right(int grid[SIZE][SIZE], int row, int expected)
+int	check_row_right(int **grid, int row, int expected, int size)
 {
 	int	col;
 	int	visible;
 	int	max_height;
 
-	col = SIZE - 1;
+	col = size - 1;
 	visible = 0;
 	max_height = 0;
 	while (col >= 0)
@@ -54,7 +54,7 @@ int	check_row_right(int grid[SIZE][SIZE], int row, int expected)
 	return (visible == expected);
 }
 
-int	check_col_up(int grid[SIZE][SIZE], int col, int expected)
+int	check_col_up(int **grid, int col, int expected, int size)
 {
 	int	row;
 	int	visible;
@@ -63,7 +63,7 @@ int	check_col_up(int grid[SIZE][SIZE], int col, int expected)
 	row = 0;
 	visible = 0;
 	max_height = 0;
-	while (row < SIZE)
+	while (row < size)
 	{
 		if (grid[row][col] > max_height)
 		{
@@ -75,13 +75,13 @@ int	check_col_up(int grid[SIZE][SIZE], int col, int expected)
 	return (visible == expected);
 }
 
-int	check_col_down(int grid[SIZE][SIZE], int col, int expected)
+int	check_col_down(int **grid, int col, int expected, int size)
 {
 	int	row;
 	int	visible;
 	int	max_height;
 
-	row = SIZE - 1;
+	row = size - 1;
 	visible = 0;
 	max_height = 0;
 	while (row >= 0)
@@ -96,12 +96,12 @@ int	check_col_down(int grid[SIZE][SIZE], int col, int expected)
 	return (visible == expected);
 }
 
-int	check_latin_square(int grid[SIZE][SIZE], int row, int col, int height)
+int	check_latin_square(int **grid, int row, int col, int height, int size)
 {
 	int	i;
 
 	i = 0;
-	while (i < SIZE)
+	while (i < size)
 	{
 		if (grid[row][i] == height || grid[i][col] == height)
 			return (0);

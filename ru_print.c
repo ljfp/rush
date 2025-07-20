@@ -14,19 +14,19 @@
 
 void	ft_putchar(char c);
 
-void	print_grid(int grid[SIZE][SIZE])
+void	print_grid(int **grid, int size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < SIZE)
+	while (i < size)
 	{
 		j = 0;
-		while (j < SIZE)
+		while (j < size)
 		{
 			ft_putchar(grid[i][j] + '0');
-			if (j < SIZE - 1)
+			if (j < size - 1)
 				ft_putchar(' ');
 			j++;
 		}

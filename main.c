@@ -11,18 +11,58 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "rush.h"
 
-void	init_grid(int grid[SIZE][SIZE])
+int	**create_grid(int size)
+{
+	int	**grid;
+	int	i;
+
+	grid = (int **)malloc(size * sizeof(int *));
+	if (!grid)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		grid[i] = (int *)malloc(size * sizeof(int));
+		if (!grid[i])
+		{
+			while (--i >= 0)
+				free(grid[i]);
+			free(grid);
+			return (NULL);
+		}
+		i++;
+	}
+	return (grid);
+}
+
+void	free_grid(int **grid, int size)
+{
+	int	i;
+
+	if (!grid)
+		return ;
+	i = 0;
+	while (i < size)
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
+}
+
+void	init_grid(int **grid, int size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < SIZE)
+	while (i < size)
 	{
 		j = 0;
-		while (j < SIZE)
+		while (j < size)
 		{
 			grid[i][j] = 0;
 			j++;
@@ -34,24 +74,32 @@ void	init_grid(int grid[SIZE][SIZE])
 int	main(int argc, char **argv)
 {
 	t_input	input;
-	int		grid[SIZE][SIZE];
+	int		**grid;
 
 	if (argc != 2)
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	init_grid(grid);
 	if (!parse_input(argv[1], &input))
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	if (!solve(grid, &input))
+	grid = create_grid(input.size);
+	if (!grid)
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	print_grid(grid);
+	init_grid(grid, input.size);
+	if (!solve(grid, &input))
+	{
+		write(1, "Error\n", 6);
+		free_grid(grid, input.size);
+		return (1);
+	}
+	print_grid(grid, input.size);
+	free_grid(grid, input.size);
 	return (0);
 }

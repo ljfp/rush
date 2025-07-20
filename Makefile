@@ -11,4 +11,8 @@ clean:
 
 re: clean all
 
-.PHONY: all clean re
+test: all
+	@chmod +x test.sh
+	@./test.sh
+
+.PHONY: all clean re test
