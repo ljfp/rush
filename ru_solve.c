@@ -37,7 +37,7 @@ int	is_row_valid(int grid[SIZE][SIZE], int row, t_input *input)
 	return (1);
 }
 
-int	check_col_constraints(int grid[SIZE][SIZE], int col, t_input *input)
+int	is_col_valid(int grid[SIZE][SIZE], int col, t_input *input)
 {
 	if (!check_col_up(grid, col, input->col_up[col]))
 		return (0);
@@ -61,7 +61,7 @@ int	is_safe(int grid[SIZE][SIZE], t_pos pos, t_input *input)
 	placed = 1;
 	if (pos.row == SIZE - 1)
 	{
-		if (!check_col_constraints(grid, pos.col, input))
+		if (!is_col_valid(grid, pos.col, input))
 			placed = 0;
 	}
 	if (!placed)

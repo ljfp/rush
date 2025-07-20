@@ -33,13 +33,20 @@ typedef struct s_pos
 }	t_pos;
 
 /* main.c */
+void	init_grid(int grid[SIZE][SIZE]);
+
+/* ru_parse.c */
 int		parse_input(char *str, t_input *input);
 int     is_valid_number(char c);
+void	assign_value_to_input(t_input *input, int count, int j, int value);
+int		process_valid_number(char c, t_input *input, int *j, int *count);
 
 /* ru_solve.c */
 int		solve(int grid[SIZE][SIZE], t_input *input);
 int		is_safe(int grid[SIZE][SIZE], t_pos pos, t_input *input);
 int     is_row_complete(int grid[SIZE][SIZE], int row);
+int		is_row_valid(int grid[SIZE][SIZE], int row, t_input *input);
+int		is_col_valid(int grid[SIZE][SIZE], int col, t_input *input);
 
 /* ru_check.c */
 int		check_row_left(int grid[SIZE][SIZE], int row, int expected);
