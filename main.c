@@ -6,7 +6,7 @@
 /*   By: lauferna <ljfp@ljfp.xyz>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:50:24 by lauferna          #+#    #+#             */
-/*   Updated: 2025/07/19 20:09:26 by lauferna         ###   ########.fr       */
+/*   Updated: 2025/07/20 13:27:02 by lauferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,7 @@ int	main(int argc, char **argv)
 	t_input	input;
 	int		**grid;
 
-	if (argc != 2)
-	{
-		write(1, "Error\n", 6);
-		return (1);
-	}
-	if (!parse_input(argv[1], &input))
+	if (argc != 2 || (!parse_input(argv[1], &input)))
 	{
 		write(1, "Error\n", 6);
 		return (1);
